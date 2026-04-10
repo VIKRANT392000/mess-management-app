@@ -1,0 +1,49 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          libsqlite3-dev \
+          tk-dev \
+          libssl-dev \
+          openssl \
+          libffi-dev \
+          libbz2-dev \
+          libncurses5-dev \
+          libncursesw5-dev \
+          zlib1g-dev \
+          scons
+        pip install --user --upgrade buildozer cython==0.29.33
+
+    - name: Build with Buildozer
+      run: |
+        yes | buildozer -v android debug
+      env:
+        # Buildozer needs a local binaries path
+        PATH: /home/runner/.local/bin:$PATH
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: MessManager-Debug-APK
+        path: bin/*.apk

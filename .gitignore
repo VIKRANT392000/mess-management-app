@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+*.db
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Buildozer and Android build
+.buildozer/
+bin/
+
+# IDEs
+.vscode/
+.idea/
+
+# Gemini / Antigravity
+.gemini/
+logs/
+exports/
+receipts/
