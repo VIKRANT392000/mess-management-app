@@ -23,6 +23,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y \
           build-essential \
+          git \
+          zip \
+          unzip \
           libsqlite3-dev \
           tk-dev \
           libssl-dev \
@@ -32,7 +35,11 @@ jobs:
           libncurses5-dev \
           libncursesw5-dev \
           zlib1g-dev \
-          scons
+          scons \
+          autoconf \
+          automake \
+          libtool \
+          pkg-config
         pip install --user --upgrade buildozer cython==0.29.33
 
     - name: Build with Buildozer
