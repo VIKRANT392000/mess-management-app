@@ -5,6 +5,8 @@ __pycache__/
 
 # Database
 *.db
+*.db-shm
+*.db-wal
 
 # Virtual Environment
 venv/
@@ -24,3 +26,6 @@ bin/
 logs/
 exports/
 receipts/
+.agent/
+.agents/
+.gemini_config
